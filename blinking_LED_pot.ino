@@ -1,4 +1,4 @@
-const int ledPin =  13;      // пин со светодиодом
+const int led =  13;      // пин со светодиодом
 int p;
  
 void setup() {
