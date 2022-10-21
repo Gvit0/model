@@ -16,6 +16,9 @@ void loop()
   digitalWrite(4, HIGH);
   delay(1500); // Wait for 1500 millisecond(s)
   digitalWrite(4, LOW);
+  digitalWrite(3, HIGH);
+  delay(1000); // Wait for 1000 millisecond(s)
+  digitalWrite(3, LOW)
   digitalWrite(2, HIGH);
   delay(1500); // Wait for 1500 millisecond(s)
 }
