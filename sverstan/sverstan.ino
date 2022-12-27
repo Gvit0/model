@@ -7,11 +7,11 @@
 #define SW 9
 
 #include <GyverStepper.h>
-GStepper<STEPPER2WIRE> stepper(200, 2, 3);
+GStepper<STEPPER2WIRE> stepper(200, 9, 8);
 
-int bu = 4;
+int bu = 11;
 bool ku = false;
-int bd = 5;
+int bd = 10;
 bool kd = false;
 int size = 0;
 
@@ -53,10 +53,10 @@ void serial(){
     char ch = Serial.read();
     if (ch == 'd') stepper.brake();
     if (ch == 'w'  && ku == false){ 
-      stepper.setSpeed(25);
+      stepper.setSpeed(250);
     }
     if (ch == 's' && kd == false ) {
-      stepper.setSpeed(-25);
+      stepper.setSpeed(-250);
     }
   }
 }
