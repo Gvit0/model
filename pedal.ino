@@ -9,7 +9,7 @@ int pot;
 int signal;
 void setup() {
   pinMode(3, INPUT);
-  mySerial.begin(115200);
+  mySerial.begin(9600);
 }
 
 void loop() {
