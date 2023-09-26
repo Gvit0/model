@@ -1,0 +1,41 @@
+// Подключение пинов
+const int potPin = A0;     // Пин для потенциометра
+const int buttonPin = 2;   // Пин для кнопки
+const int motorPin = 9;    // Пин для мотора
+
+int motorSpeed = 0;        // Скорость мотора (от 0 до 255)
+bool motorOn = false;      // Флаг состояния мотора (включен/выключен)
+
+void setup() {
+  pinMode(buttonPin, INPUT_PULLUP);  // Установка пина кнопки в режим входа с подтяжкой
+  pinMode(motorPin, OUTPUT);         // Установка пина мотора в режим выхода
+}
+
+void loop() {
+  // Проверка состояния кнопки
+  if (digitalRead(buttonPin) == LOW) {
+    if (!motorOn) {
+      // Если мотор выключен, включаем его
+      motorOn = true;
+      motorSpeed = 255;  // Устанавливаем максимальную скорость
+      analogWrite(motorPin, motorSpeed);
+    } else {
+      // Если мотор включен, выключаем его
+      motorOn = false;
+      motorSpeed = 0;    // Устанавливаем скорость в 0
+      analogWrite(motorPin, motorSpeed);
+    }
+    delay(100);  // Задержка для стабилизации состояния кнопки
+  }
+  
+  // Чтение значения потенциометра
+  int potValue = analogRead(potPin);
+  
+  // Преобразование значения потенциометра в диапазон скорости мотора (от 0 до 255)
+  motorSpeed = map(potValue, 0, 1023, 0, 255);
+  
+  // Установка скорости мотора
+  analogWrite(motorPin, motorSpeed);
+  
+  delay(10);  // Небольшая задержка для стабилизации
+}
